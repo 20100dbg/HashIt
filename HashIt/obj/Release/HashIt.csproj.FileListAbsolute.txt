@@ -1,0 +1,16 @@
+C:\Users\Marty\Documents\repos\HashIt\HashIt\bin\Release\App.config
+C:\Users\Marty\Documents\repos\HashIt\HashIt\bin\Release\HashIt.exe.config
+C:\Users\Marty\Documents\repos\HashIt\HashIt\bin\Release\HashIt.exe
+C:\Users\Marty\Documents\repos\HashIt\HashIt\bin\Release\HashIt.pdb
+C:\Users\Marty\Documents\repos\HashIt\HashIt\bin\Release\CryptSharp.dll
+C:\Users\Marty\Documents\repos\HashIt\HashIt\bin\Release\HashLib.dll
+C:\Users\Marty\Documents\repos\HashIt\HashIt\bin\Release\SHA3.Net.dll
+C:\Users\Marty\Documents\repos\HashIt\HashIt\bin\Release\BouncyCastle.Crypto.dll
+C:\Users\Marty\Documents\repos\HashIt\HashIt\obj\Release\HashIt.csprojAssemblyReference.cache
+C:\Users\Marty\Documents\repos\HashIt\HashIt\obj\Release\HashIt.Config.resources
+C:\Users\Marty\Documents\repos\HashIt\HashIt\obj\Release\HashIt.HashIt.resources
+C:\Users\Marty\Documents\repos\HashIt\HashIt\obj\Release\HashIt.Properties.Resources.resources
+C:\Users\Marty\Documents\repos\HashIt\HashIt\obj\Release\HashIt.csproj.GenerateResource.cache
+C:\Users\Marty\Documents\repos\HashIt\HashIt\obj\Release\HashIt.csproj.CopyComplete
+C:\Users\Marty\Documents\repos\HashIt\HashIt\obj\Release\HashIt.exe
+C:\Users\Marty\Documents\repos\HashIt\HashIt\obj\Release\HashIt.pdb

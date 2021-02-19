@@ -53,8 +53,15 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HashLib">
+    <Reference Include="CryptSharp">
+      <HintPath>.\CryptSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="HashLib, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>.\HashLib.dll</HintPath>
+    </Reference>
+    <Reference Include="SHA3.Net">
+      <HintPath>.\SHA3.Net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -82,6 +89,7 @@
     <Compile Include="HashIt.Designer.cs">
       <DependentUpon>HashIt.cs</DependentUpon>
     </Compile>
+    <Compile Include="LM.cs" />
     <Compile Include="MD5Crypt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

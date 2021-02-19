@@ -43,7 +43,6 @@ apache_md5_crypt() provides a function compatible with Apache's
 
 using System;
 using System.Text;
-using System.Collections.Generic;
 using System.Security.Cryptography;
 namespace Unix_MD5Crypt
 {
@@ -151,7 +150,7 @@ namespace Unix_MD5Crypt
 
 
             // Add as many characters of ctx1 to ctx
-            byte[] hashM;// = new byte[15];
+            //byte[] hashM;// = new byte[15];
             for (len = password.Length; len > 0; len -= 16)
             {
                 if (len > 16)
