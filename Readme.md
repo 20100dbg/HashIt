@@ -1,6 +1,8 @@
 # HashIt
 Logiciel de calcul d'empreinte pour texte et fichier.
 
+<img src="https://pbs.twimg.com/media/Euvn0LvXUAEflbZ?format=png&name=900x900">
+
 ### HashIt se base sur les bibliothèques
 - hashlib 2.1.0.0 : https://github.com/bonesoul/HashLib
 - CryptSharp 2.1.0.0 : https://www.zer7.com/software/cryptsharp
