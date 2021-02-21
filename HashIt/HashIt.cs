@@ -95,6 +95,7 @@ namespace HashIt
                     object ob = h.GetType().InvokeMember("Get" + algo, BindingFlags.Public | BindingFlags.Instance | BindingFlags.InvokeMethod, null, h, new object[] { p });
                     String hash = ob.ToString();
                     hash = ((Settings.OutputUppercase) ? hash.ToUpper() : hash.ToLower());
+                    hash = hash.Replace("-", "");
                     AddRow(algo, hash);
 
                     stream.Position = 0;

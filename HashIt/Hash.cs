@@ -125,13 +125,17 @@ namespace HashIt
 
         public string GetSHA3_256(Param p)
         {
-            byte[] h = Sha3.Sha3256().ComputeHash(Settings.GetEncoding().GetBytes(p.StringValueToHash));
+            byte[] h;
+            if (p.Fs != null) h = Sha3.Sha3256().ComputeHash(p.Fs);
+            else h = Sha3.Sha3256().ComputeHash(Settings.GetEncoding().GetBytes(p.StringValueToHash));
             return BitConverter.ToString(h);
         }
 
         public string GetSHA3_512(Param p)
         {
-            byte[] h = Sha3.Sha3512().ComputeHash(Settings.GetEncoding().GetBytes(p.StringValueToHash));
+            byte[] h;
+            if (p.Fs != null) h = Sha3.Sha3512().ComputeHash(p.Fs);
+            else h = Sha3.Sha3512().ComputeHash(Settings.GetEncoding().GetBytes(p.StringValueToHash));
             return BitConverter.ToString(h);
         }
 

@@ -10,9 +10,15 @@ Logiciel de calcul d'empreinte pour texte et fichier.
 - SHA3.Net : https://github.com/griffo-io/sha3.net
 - MD5crypt par Poul-Henning Kamp
 
+### Fonctionnalités
+- Hash de texte 
+- Prise en charge du salt ($salt . pass, $pass . $salt, $salt . $pass . $salt)
+- Export des résultats en CSV
+- 
+
+
 
 ### HashIt gère les algorithmes :
-
 - Blowfish
 - LDAP
 - LM
