@@ -107,8 +107,10 @@ namespace HashIt
     {
         public String OriginalPassword { get; set; }
         public String SaltedPassword { get; set; }
+
         public String StringValueToHash { get; set; }
         public Byte[] ByteValueToHash { get; set; }
+
         public String ResultHash { get; set; }
         public String Salt { get; set; }
         public Int32 Iterations { get; set; }

@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Reflection;
 using System.Text;
 using HashLib;
+using System.Security.Cryptography;
 
 namespace HashIt
 {
@@ -13,7 +14,8 @@ namespace HashIt
         public Boolean configShown = false;
         public String DraggedFile = "";
         String version = "1.0.0";
-        String dateVersion = "04/02/2021";
+        String dateVersion = "21/02/2021";
+        int tailleMaxAvertissement = 20;
 
         /*
         PBKDF2 :  Rfc2898DeriveBytes (HMAC SHA1)
@@ -45,12 +47,7 @@ namespace HashIt
             cb_useSalt.SelectedIndex = 0;
 
 
-            //test
-            String sPass = "test";
-            Byte[] bPass = Settings.GetEncoding().GetBytes(sPass);
-
-            HashResult hr;
-            hr = HashFactory.Crypto.SHA3.CreateKeccak256().ComputeString(sPass);
+            //forcer le checksum toupper / tolower selon config
 
         }
 
@@ -73,9 +70,10 @@ namespace HashIt
         private void b_hashFile_Click(object sender, EventArgs e)
         {
             Clear();
+            tb_checksum.Text = (Settings.OutputUppercase) ? tb_checksum.Text.ToUpper() : tb_checksum.Text.ToLower();
             if (!File.Exists(DraggedFile)) return;
 
-            if ((20 * 1024 * 1024) <= new FileInfo(DraggedFile).Length)
+            if ((tailleMaxAvertissement * 1024 * 1024) <= new FileInfo(DraggedFile).Length)
             {
                 DialogResult dr = MessageBox.Show("Attention fichier lourd. Continuer ?", "", MessageBoxButtons.YesNo);
                 if (dr == DialogResult.No) return;
@@ -109,6 +107,8 @@ namespace HashIt
         private void b_hashText_Click(object sender, EventArgs e)
         {
             Clear();
+            tb_checksum.Text = (Settings.OutputUppercase) ? tb_checksum.Text.ToUpper() : tb_checksum.Text.ToLower();
+
             int saltUse = cb_useSalt.SelectedIndex;
             int nb = (int)nb_iterations.Value;
             String originalPassword = tb_texte.Text;
@@ -128,13 +128,16 @@ namespace HashIt
                 SaltedPassword = saltedPassword
             };
 
-            if (saltUse == 0) p.StringValueToHash = p.OriginalPassword;
-            else p.StringValueToHash = p.SaltedPassword;
-            p.ByteValueToHash = Settings.GetEncoding().GetBytes(p.StringValueToHash);
+
 
             for (int i = 0; i < cblb_algos.CheckedItems.Count; i++)
             {
                 String algo = cblb_algos.CheckedItems[i].ToString();
+
+                if (saltUse == 0) p.StringValueToHash = p.OriginalPassword;
+                else p.StringValueToHash = p.SaltedPassword;
+                p.ByteValueToHash = Settings.GetEncoding().GetBytes(p.StringValueToHash);
+
 
                 for (int j = 0; j < p.Iterations; j++)
                 {
@@ -143,6 +146,7 @@ namespace HashIt
                     String hash = ob.ToString();
                     hash = hash.Replace("-", "");
                     hash = ((Settings.OutputUppercase) ? hash.ToUpper() : hash.ToLower());
+
                     p.ResultHash = hash;
                     p.StringValueToHash = hash;
                 }

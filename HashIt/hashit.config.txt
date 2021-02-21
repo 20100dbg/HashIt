@@ -1,21 +1,20 @@
 ﻿EncodageIndex=1
 OutputUppercase=True
-Blowfish;description vide;True;False;True;False
 LDAP;description vide;True;False;True;False
 LM;Ancien hash Windows;True;False;True;False
 NTLM;NTLM v1 hash Windows (MD4);True;False;True;False
 Phpass;Hash webapp (PHPBB, wordpress);True;False;True;False
 Scrypt; (cost : 16384, block : 8, keyLength : 64);True;False;True;False
-Keccak_256;SHA 3 candidate;True;False;True;True
+Keccak_256;SHA 3 candidate 256 bits;True;False;True;True
 Keccak_512;SHA 3 candidate;True;False;True;True
-SHA3_256;description vide;True;True;True;False
-SHA3_512;description vide;True;False;True;False
+SHA3_256;SHA3 finalisé 256 bits;True;True;True;False
+SHA3_512;SHA3 finalisé 512 bits;True;False;True;False
 MySQL4;MySql OLD_PASSWORD();True;False;True;False
-MySQL5;MySql PASSWORD;True;False;True;False
-MD2;description vide;True;False;True;True
-MD4;description vide;True;False;True;True
-MD5;description vide;True;False;True;True
-MD5Unix;description vide;True;False;True;False
+MySQL5;MySql PASSWORD();True;False;True;False
+MD2;Message Digest 2;True;False;True;True
+MD4;Message Digest 4;True;False;True;True
+MD5;Message Digest 5;True;False;True;True
+MD5Unix;Equivalent de la fonction Unix crypt();True;False;True;False
 SHA1;description vide;True;False;True;True
 SHA256;description vide;True;False;True;True
 SHA384;description vide;True;False;True;True
@@ -24,7 +23,7 @@ RIPEMD128;description vide;True;False;True;True
 RIPEMD160;description vide;True;False;True;True
 RIPEMD256;description vide;True;False;True;True
 RIPEMD320;description vide;True;False;True;True
-PBKDF2;description vide;True;False;True;False
+PBKDF2;Password Based Key Derivation Function. Spécialement conçu pour les mots de passe;True;False;True;False
 CRC32;description vide;True;False;True;True
 CRC64;description vide;True;False;True;True
 Murmur2;description vide;True;False;True;True

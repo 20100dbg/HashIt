@@ -14,102 +14,124 @@ namespace HashIt
 
         }
 
-        public String GetBlowfish(Param p)
-        {
-            return Crypter.Blowfish.Crypt(p.StringValueToHash);
-        }
 
         public String GetLDAP(Param p)
         {
-            return Crypter.Ldap.Crypt(p.StringValueToHash);
+            if (p.Fs != null) return "";
+            else return Crypter.Ldap.Crypt(p.StringValueToHash);
         }
 
         public String GetLM(Param p)
         {
-            String s = p.StringValueToHash;
-            if (s.Length > 14) s = s.Substring(0, 14);
-            return BitConverter.ToString(WinHash.LMHash.Compute(s));
+            if (p.Fs != null) return "";
+            else
+            {
+                String s = p.StringValueToHash;
+                if (s.Length > 14) s = s.Substring(0, 14);
+                return BitConverter.ToString(WinHash.LMHash.Compute(s));
+            }
         }
 
         public String GetNTLM(Param p)
         {
-            return GetMD4(p);
+            if (p.Fs != null) return "";
+            else return GetMD4(p);
         }
 
         public String GetPhpass(Param p)
         {
-            return Crypter.Phpass.Crypt(p.StringValueToHash);
+            if (p.Fs != null) return "";
+            else return Crypter.Phpass.Crypt(p.StringValueToHash);
         }
 
         public string GetScrypt(Param p)
         {
-            int cost = 16384, blockSize = 8, parallel = 1, maxThread = 1, derivedKeyLength = 64;
-            //cost : The cost parameter, typically a fairly large number such as 262144. Memory usage and CPU time scale approximately linearly with this parameter. 
-            //blockSize :  The mixing block size, typically 8. Memory usage and CPU time scale approximately linearly with this parameter. 
-            //parallel :  The level of parallelism, typically 1. CPU time scales approximately linearly with this parameter. 
-            //maxThread :  The maximum number of threads to spawn to derive the key. This is limited by the parallel value. null will use as many threads as possible. 
-            //derivedKeyLength : The desired length of the derived key.
+            if (p.Fs != null) return "";
+            else
+            {
+                int cost = 16384, blockSize = 8, parallel = 1, maxThread = 1, derivedKeyLength = 64;
+                //cost : The cost parameter, typically a fairly large number such as 262144. Memory usage and CPU time scale approximately linearly with this parameter. 
+                //blockSize :  The mixing block size, typically 8. Memory usage and CPU time scale approximately linearly with this parameter. 
+                //parallel :  The level of parallelism, typically 1. CPU time scales approximately linearly with this parameter. 
+                //maxThread :  The maximum number of threads to spawn to derive the key. This is limited by the parallel value. null will use as many threads as possible. 
+                //derivedKeyLength : The desired length of the derived key.
 
-            byte[] b = Settings.GetEncoding().GetBytes(p.StringValueToHash);
-            byte[] s = Settings.GetEncoding().GetBytes(p.Salt);
-            byte[] r = CryptSharp.Utility.SCrypt.ComputeDerivedKey(b, s, cost, blockSize, parallel, maxThread, derivedKeyLength);
-            return BitConverter.ToString(r);
+                byte[] b = Settings.GetEncoding().GetBytes(p.StringValueToHash);
+                byte[] s = Settings.GetEncoding().GetBytes(p.Salt);
+                byte[] r = CryptSharp.Utility.SCrypt.ComputeDerivedKey(b, s, cost, blockSize, parallel, maxThread, derivedKeyLength);
+                return BitConverter.ToString(r);
+            }
         }
 
         public string GetMySQL4(Param p)
         {
-            UInt32 nr = 1345345333;
-            UInt32 add = 7;
-            UInt32 nr2 = 0x12345671;
-
-            for (int i = 0; i < p.StringValueToHash.Length; i++)
+            if (p.Fs != null) return "";
+            else
             {
-                char c = p.StringValueToHash.Substring(i, 1)[0];
-                if (c == ' ' || c == '\t') continue;
+                UInt32 nr = 1345345333;
+                UInt32 add = 7;
+                UInt32 nr2 = 0x12345671;
 
-                UInt32 tmp = (UInt32)c;
-                nr ^= (((nr & 63) + add) * tmp) + ((nr << 8) & 0xFFFFFFFF);
-                nr2 += ((nr2 << 8) & 0xFFFFFFFF) ^ nr;
-                add += tmp;
+                for (int i = 0; i < p.StringValueToHash.Length; i++)
+                {
+                    char c = p.StringValueToHash.Substring(i, 1)[0];
+                    if (c == ' ' || c == '\t') continue;
+
+                    UInt32 tmp = (UInt32)c;
+                    nr ^= (((nr & 63) + add) * tmp) + ((nr << 8) & 0xFFFFFFFF);
+                    nr2 += ((nr2 << 8) & 0xFFFFFFFF) ^ nr;
+                    add += tmp;
+                }
+
+                int x = 31;
+                UInt32 y = 1;
+
+                UInt32 out_a = nr & ((y << x) - 1);
+                UInt32 out_b = nr2 & ((y << x) - 1);
+
+                return String.Format("{0:x8}{1:x8}", out_a, out_b);
             }
-
-            int x = 31;
-            UInt32 y = 1;
-
-            UInt32 out_a = nr & ((y << x) - 1);
-            UInt32 out_b = nr2 & ((y << x) - 1);
-
-            return String.Format("{0:x8}{1:x8}", out_a, out_b);
         }
 
         public string GetMySQL5(Param p)
         {
-            SHA1 s = SHA1.Create();
-            byte[] passBytes = Settings.GetEncoding().GetBytes(p.StringValueToHash);
-            byte[] hash = s.ComputeHash(passBytes);
-            hash = s.ComputeHash(hash);
+            if (p.Fs != null) return "";
+            else
+            {
+                SHA1 s = SHA1.Create();
+                byte[] passBytes = Settings.GetEncoding().GetBytes(p.StringValueToHash);
+                byte[] hash = s.ComputeHash(passBytes);
+                hash = s.ComputeHash(hash);
 
-            var sb = new StringBuilder("*");
-            for (int i = 0; i < hash.Length; i++) sb.AppendFormat("{0:X2}", hash[i]);
-            return sb.ToString();
+                var sb = new StringBuilder("*");
+                for (int i = 0; i < hash.Length; i++) sb.AppendFormat("{0:X2}", hash[i]);
+                return sb.ToString();
+            }
         }
 
         public String GetPBKDF2(Param p) //String password, String salt, int iterations = 10000)
         {
-            if (p.Iterations == 1) p.Iterations = 10000;
-            Byte[] bsalt = Settings.GetEncoding().GetBytes(p.Salt);
-            if (bsalt.Length < 8) return "";
+            if (p.Fs != null) return "";
+            else
+            {
+                if (p.Iterations == 1) p.Iterations = 10000;
+                Byte[] bsalt = Settings.GetEncoding().GetBytes(p.Salt);
+                if (bsalt.Length < 8) return "";
 
-            int outputBytes = 32;
-            var pbkdf2 = new Rfc2898DeriveBytes(p.StringValueToHash, bsalt, p.Iterations);
-            Byte[] bytes = pbkdf2.GetBytes(outputBytes);
-            return BitConverter.ToString(bytes);
+                int outputBytes = 32;
+                var pbkdf2 = new Rfc2898DeriveBytes(p.StringValueToHash, bsalt, p.Iterations);
+                Byte[] bytes = pbkdf2.GetBytes(outputBytes);
+                return BitConverter.ToString(bytes);
+            }
         }
 
         public String GetMD5Unix(Param p)
         {
-            return Unix_MD5Crypt.MD5Crypt.crypt(p.StringValueToHash, p.Salt);
+            if (p.Fs != null) return "";
+            else return Unix_MD5Crypt.MD5Crypt.crypt(p.StringValueToHash, p.Salt);
         }
+
+
 
         public string GetKeccak_256(Param p)
         {

@@ -64,7 +64,7 @@
             this.cblb_algos.FormattingEnabled = true;
             this.cblb_algos.Location = new System.Drawing.Point(12, 27);
             this.cblb_algos.Name = "cblb_algos";
-            this.cblb_algos.Size = new System.Drawing.Size(175, 334);
+            this.cblb_algos.Size = new System.Drawing.Size(175, 304);
             this.cblb_algos.TabIndex = 12;
             this.cblb_algos.SelectedIndexChanged += new System.EventHandler(this.cblb_algos_SelectedIndexChanged);
             // 
@@ -285,9 +285,11 @@
             // l_descAlgo
             // 
             this.l_descAlgo.AutoSize = true;
-            this.l_descAlgo.Location = new System.Drawing.Point(12, 375);
+            this.l_descAlgo.Location = new System.Drawing.Point(12, 334);
+            this.l_descAlgo.MaximumSize = new System.Drawing.Size(200, 50);
+            this.l_descAlgo.MinimumSize = new System.Drawing.Size(180, 50);
             this.l_descAlgo.Name = "l_descAlgo";
-            this.l_descAlgo.Size = new System.Drawing.Size(35, 13);
+            this.l_descAlgo.Size = new System.Drawing.Size(180, 50);
             this.l_descAlgo.TabIndex = 14;
             this.l_descAlgo.Text = "label5";
             // 
