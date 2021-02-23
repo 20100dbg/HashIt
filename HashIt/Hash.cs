@@ -14,6 +14,149 @@ namespace HashIt
 
         }
 
+        public String GetAdler32(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Checksum.CreateAdler32().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Checksum.CreateAdler32().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetCRC32_IEEE(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Checksum.CreateCRC32_IEEE().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Checksum.CreateCRC32_IEEE().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetCRC64_ECMA(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Checksum.CreateCRC64_ECMA().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Checksum.CreateCRC64_ECMA().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetGost(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateGost().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateGost().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetGrindahl256(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateGrindahl256().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateGrindahl256().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetGrindahl512(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateGrindahl512().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateGrindahl512().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetHAS160(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateHAS160().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateHAS160().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetHaval_3_128(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateHaval_3_128().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateHaval_3_128().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetHaval_3_160(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateHaval_3_160().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateHaval_3_160().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetHaval_3_192(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateHaval_3_192().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateHaval_3_192().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetHaval_3_224(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateHaval_3_224().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateHaval_3_224().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetHaval_3_256(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateHaval_3_256().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateHaval_3_256().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetHaval_4_128(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateHaval_4_128().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateHaval_4_128().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetHaval_4_160(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateHaval_4_160().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateHaval_4_160().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetHaval_4_192(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateHaval_4_192().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateHaval_4_192().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetHaval_4_224(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateHaval_4_224().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateHaval_4_224().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetHaval_4_256(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateHaval_4_256().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateHaval_4_256().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetHaval_5_128(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateHaval_5_128().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateHaval_5_128().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetHaval_5_160(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateHaval_5_160().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateHaval_5_160().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetHaval_5_192(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateHaval_5_192().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateHaval_5_192().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetHaval_5_224(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateHaval_5_224().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateHaval_5_224().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetHaval_5_256(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateHaval_5_256().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateHaval_5_256().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetKeccak_256(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateKeccak256().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateKeccak256().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetKeccak_512(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateKeccak512().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateKeccak512().ComputeString(p.StringValueToHash).ToString();
+        }
 
         public String GetLDAP(Param p)
         {
@@ -32,35 +175,40 @@ namespace HashIt
             }
         }
 
-        public String GetNTLM(Param p)
+        public String GetMD2(Param p)
         {
-            if (p.Fs != null) return "";
-            else return GetMD4(p);
+            if (p.Fs != null) return HashFactory.Crypto.CreateMD2().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateMD2().ComputeString(p.StringValueToHash).ToString();
         }
 
-        public String GetPhpass(Param p)
+        public String GetMD4(Param p)
         {
-            if (p.Fs != null) return "";
-            else return Crypter.Phpass.Crypt(p.StringValueToHash);
+            if (p.Fs != null) return HashFactory.Crypto.CreateMD4().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateMD4().ComputeString(p.StringValueToHash).ToString();
         }
 
-        public string GetScrypt(Param p)
+        public String GetMD5(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateMD5().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateMD5().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetMD5Unix(Param p)
         {
             if (p.Fs != null) return "";
-            else
-            {
-                int cost = 16384, blockSize = 8, parallel = 1, maxThread = 1, derivedKeyLength = 64;
-                //cost : The cost parameter, typically a fairly large number such as 262144. Memory usage and CPU time scale approximately linearly with this parameter. 
-                //blockSize :  The mixing block size, typically 8. Memory usage and CPU time scale approximately linearly with this parameter. 
-                //parallel :  The level of parallelism, typically 1. CPU time scales approximately linearly with this parameter. 
-                //maxThread :  The maximum number of threads to spawn to derive the key. This is limited by the parallel value. null will use as many threads as possible. 
-                //derivedKeyLength : The desired length of the derived key.
+            else return Unix_MD5Crypt.MD5Crypt.crypt(p.StringValueToHash, p.Salt);
+        }
 
-                byte[] b = Settings.GetEncoding().GetBytes(p.StringValueToHash);
-                byte[] s = Settings.GetEncoding().GetBytes(p.Salt);
-                byte[] r = CryptSharp.Utility.SCrypt.ComputeDerivedKey(b, s, cost, blockSize, parallel, maxThread, derivedKeyLength);
-                return BitConverter.ToString(r);
-            }
+        public String GetMurmur2(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash64.CreateMurmur2().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash64.CreateMurmur2().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetMurmur3(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash128.CreateMurmur3_128().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash128.CreateMurmur3_128().ComputeString(p.StringValueToHash).ToString();
         }
 
         public string GetMySQL4(Param p)
@@ -109,6 +257,18 @@ namespace HashIt
             }
         }
 
+        public String GetNTLM(Param p)
+        {
+            if (p.Fs != null) return "";
+            else return GetMD4(p);
+        }
+
+        public String GetPanama(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreatePanama().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreatePanama().ComputeString(p.StringValueToHash).ToString();
+        }
+
         public String GetPBKDF2(Param p) //String password, String salt, int iterations = 10000)
         {
             if (p.Fs != null) return "";
@@ -125,82 +285,28 @@ namespace HashIt
             }
         }
 
-        public String GetMD5Unix(Param p)
+        public String GetPhpass(Param p)
         {
             if (p.Fs != null) return "";
-            else return Unix_MD5Crypt.MD5Crypt.crypt(p.StringValueToHash, p.Salt);
+            else return Crypter.Phpass.Crypt(p.StringValueToHash);
         }
 
-
-
-        public string GetKeccak_256(Param p)
+        public String GetRadioGatun32(Param p)
         {
-            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateKeccak256().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Crypto.SHA3.CreateKeccak256().ComputeString(p.StringValueToHash).ToString();
+            if (p.Fs != null) return HashFactory.Crypto.CreateRadioGatun32().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateRadioGatun32().ComputeString(p.StringValueToHash).ToString();
         }
 
-        public string GetKeccak_512(Param p)
+        public String GetRadioGatun64(Param p)
         {
-            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateKeccak512().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Crypto.SHA3.CreateKeccak512().ComputeString(p.StringValueToHash).ToString();
+            if (p.Fs != null) return HashFactory.Crypto.CreateRadioGatun64().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateRadioGatun64().ComputeString(p.StringValueToHash).ToString();
         }
 
-        public string GetSHA3_256(Param p)
+        public String GetRIPEMD(Param p)
         {
-            byte[] h;
-            if (p.Fs != null) h = Sha3.Sha3256().ComputeHash(p.Fs);
-            else h = Sha3.Sha3256().ComputeHash(Settings.GetEncoding().GetBytes(p.StringValueToHash));
-            return BitConverter.ToString(h);
-        }
-
-        public string GetSHA3_512(Param p)
-        {
-            byte[] h;
-            if (p.Fs != null) h = Sha3.Sha3512().ComputeHash(p.Fs);
-            else h = Sha3.Sha3512().ComputeHash(Settings.GetEncoding().GetBytes(p.StringValueToHash));
-            return BitConverter.ToString(h);
-        }
-
-        public String GetMD2(Param p)
-        {
-            if (p.Fs != null) return HashFactory.Crypto.CreateMD2().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Crypto.CreateMD2().ComputeString(p.StringValueToHash).ToString();
-        }
-
-        public String GetMD4(Param p)
-        {
-            if (p.Fs != null) return HashFactory.Crypto.CreateMD4().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Crypto.CreateMD4().ComputeString(p.StringValueToHash).ToString();
-        }
-
-        public String GetMD5(Param p)
-        {
-            if (p.Fs != null) return HashFactory.Crypto.CreateMD5().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Crypto.CreateMD5().ComputeString(p.StringValueToHash).ToString();
-        }
-
-        public String GetSHA1(Param p)
-        {
-            if (p.Fs != null) return HashFactory.Crypto.CreateSHA1().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Crypto.CreateSHA1().ComputeString(p.StringValueToHash).ToString();
-        }
-
-        public String GetSHA256(Param p)
-        {
-            if (p.Fs != null) return HashFactory.Crypto.CreateSHA256().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Crypto.CreateSHA256().ComputeString(p.StringValueToHash).ToString();
-        }
-
-        public String GetSHA384(Param p)
-        {
-            if (p.Fs != null) return HashFactory.Crypto.CreateSHA384().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Crypto.CreateSHA384().ComputeString(p.StringValueToHash).ToString();
-        }
-
-        public String GetSHA512(Param p)
-        {
-            if (p.Fs != null) return HashFactory.Crypto.CreateSHA512().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Crypto.CreateSHA512().ComputeString(p.StringValueToHash).ToString();
+            if (p.Fs != null) return HashFactory.Crypto.CreateRIPEMD().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateRIPEMD().ComputeString(p.StringValueToHash).ToString();
         }
 
         public String GetRIPEMD128(Param p)
@@ -227,16 +333,99 @@ namespace HashIt
             else return HashFactory.Crypto.CreateRIPEMD320().ComputeString(p.StringValueToHash).ToString();
         }
 
-        public String GetWhirlpool(Param p)
+        public string GetScrypt(Param p)
         {
-            if (p.Fs != null) return HashFactory.Crypto.CreateWhirlpool().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Crypto.CreateWhirlpool().ComputeString(p.StringValueToHash).ToString();
+            if (p.Fs != null) return "";
+            else
+            {
+                int cost = 16384, blockSize = 8, parallel = 1, maxThread = 1, derivedKeyLength = 64;
+                //cost : The cost parameter, typically a fairly large number such as 262144. Memory usage and CPU time scale approximately linearly with this parameter. 
+                //blockSize :  The mixing block size, typically 8. Memory usage and CPU time scale approximately linearly with this parameter. 
+                //parallel :  The level of parallelism, typically 1. CPU time scales approximately linearly with this parameter. 
+                //maxThread :  The maximum number of threads to spawn to derive the key. This is limited by the parallel value. null will use as many threads as possible. 
+                //derivedKeyLength : The desired length of the derived key.
+
+                byte[] b = Settings.GetEncoding().GetBytes(p.StringValueToHash);
+                byte[] s = Settings.GetEncoding().GetBytes(p.Salt);
+                byte[] r = CryptSharp.Utility.SCrypt.ComputeDerivedKey(b, s, cost, blockSize, parallel, maxThread, derivedKeyLength);
+                return BitConverter.ToString(r);
+            }
+        }
+        
+        public String GetSHA0(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateSHA0().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateSHA0().ComputeString(p.StringValueToHash).ToString();
         }
 
-        public String GetHaval256(Param p)
+        public String GetSHA1(Param p)
         {
-            if (p.Fs != null) return HashFactory.Crypto.CreateHaval_5_256().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Crypto.CreateHaval_5_256().ComputeString(p.StringValueToHash).ToString();
+            if (p.Fs != null) return HashFactory.Crypto.CreateSHA1().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateSHA1().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetSHA224(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateSHA224().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateSHA224().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetSHA256(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateSHA256().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateSHA256().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetSHA384(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateSHA384().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateSHA384().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetSHA512(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateSHA512().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateSHA512().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetSHA3_256(Param p)
+        {
+            byte[] h;
+            if (p.Fs != null) h = Sha3.Sha3256().ComputeHash(p.Fs);
+            else h = Sha3.Sha3256().ComputeHash(Settings.GetEncoding().GetBytes(p.StringValueToHash));
+            return BitConverter.ToString(h);
+        }
+
+        public String GetSHA3_512(Param p)
+        {
+            byte[] h;
+            if (p.Fs != null) h = Sha3.Sha3512().ComputeHash(p.Fs);
+            else h = Sha3.Sha3512().ComputeHash(Settings.GetEncoding().GetBytes(p.StringValueToHash));
+            return BitConverter.ToString(h);
+        }
+
+        public String GetSnefru_4_128(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateSnefru_4_128().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateSnefru_4_128().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetSnefru_4_256(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateSnefru_4_256().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateSnefru_4_256().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetSnefru_8_128(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateSnefru_8_128().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateSnefru_8_128().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetSnefru_8_256(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.CreateSnefru_8_256().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateSnefru_8_256().ComputeString(p.StringValueToHash).ToString();
         }
 
         public String GetTiger2(Param p)
@@ -245,64 +434,32 @@ namespace HashIt
             else return HashFactory.Crypto.CreateTiger2().ComputeString(p.StringValueToHash).ToString();
         }
 
-        public String GetPanama(Param p)
+        public String GetTiger_3_192(Param p)
         {
-            if (p.Fs != null) return HashFactory.Crypto.CreatePanama().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Crypto.CreatePanama().ComputeString(p.StringValueToHash).ToString();
+            if (p.Fs != null) return HashFactory.Crypto.CreateTiger_3_192().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateTiger_3_192().ComputeString(p.StringValueToHash).ToString();
         }
 
-        public String GetGost(Param p)
+        public String GetTiger_4_192(Param p)
         {
-            if (p.Fs != null) return HashFactory.Crypto.CreateGost().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Crypto.CreateGost().ComputeString(p.StringValueToHash).ToString();
+            if (p.Fs != null) return HashFactory.Crypto.CreateTiger_4_192().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateTiger_4_192().ComputeString(p.StringValueToHash).ToString();
         }
 
-        public String GetGrindahl512(Param p)
+        public String GetWhirlpool(Param p)
         {
-            if (p.Fs != null) return HashFactory.Crypto.CreateGrindahl512().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Crypto.CreateGrindahl512().ComputeString(p.StringValueToHash).ToString();
+            if (p.Fs != null) return HashFactory.Crypto.CreateWhirlpool().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.CreateWhirlpool().ComputeString(p.StringValueToHash).ToString();
         }
 
-        public String GetHAS160(Param p)
+
+        // en test // en test // en test 
+
+        public String GetAP(Param p)
         {
-            if (p.Fs != null) return HashFactory.Crypto.CreateHAS160().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Crypto.CreateHAS160().ComputeString(p.StringValueToHash).ToString();
+            if (p.Fs != null) return HashFactory.Hash32.CreateAP().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateAP().ComputeString(p.StringValueToHash).ToString();
         }
 
-        public String GetRadioGatun64(Param p)
-        {
-            if (p.Fs != null) return HashFactory.Crypto.CreateRadioGatun64().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Crypto.CreateRadioGatun64().ComputeString(p.StringValueToHash).ToString();
-        }
-
-        public String GetSnefru8_256(Param p)
-        {
-            if (p.Fs != null) return HashFactory.Crypto.CreateSnefru_8_256().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Crypto.CreateSnefru_8_256().ComputeString(p.StringValueToHash).ToString();
-        }
-
-        public String GetCRC32(Param p)
-        {
-            if (p.Fs != null) return HashFactory.Checksum.CreateCRC32_IEEE().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Checksum.CreateCRC32_IEEE().ComputeString(p.StringValueToHash).ToString();
-        }
-
-        public String GetCRC64(Param p)
-        {
-            if (p.Fs != null) return HashFactory.Checksum.CreateCRC64_ECMA().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Checksum.CreateCRC64_ECMA().ComputeString(p.StringValueToHash).ToString();
-        }
-
-        public String GetMurmur2(Param p)
-        {
-            if (p.Fs != null) return HashFactory.Hash64.CreateMurmur2().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Hash64.CreateMurmur2().ComputeString(p.StringValueToHash).ToString();
-        }
-
-        public String GetMurmur3(Param p)
-        {
-            if (p.Fs != null) return HashFactory.Hash128.CreateMurmur3_128().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Hash128.CreateMurmur3_128().ComputeString(p.StringValueToHash).ToString();
-        }
     }
 }

@@ -4,8 +4,6 @@ using System.IO;
 using System.Drawing;
 using System.Reflection;
 using System.Text;
-using HashLib;
-using System.Security.Cryptography;
 
 namespace HashIt
 {
@@ -13,19 +11,19 @@ namespace HashIt
     {
         public Boolean configShown = false;
         public String DraggedFile = "";
-        String version = "1.0.0";
-        String dateVersion = "21/02/2021";
+        String version = "1.0.1";
+        String dateVersion = "22/02/2021";
         int tailleMaxAvertissement = 20;
 
         /*
-        PBKDF2 :  Rfc2898DeriveBytes (HMAC SHA1)
-        maj des algos
-
+         * 
         siphash / SIP digest authentication (MD5)
         WPA ?
-        Kerberos, Skype
+        Kerberos
+        Skype
         MacOS
         MSSQL, Postgre, Oracle
+        
         MS Office, PKZIP, 7zip
         */
 
@@ -45,12 +43,25 @@ namespace HashIt
             
             cb_useSalt.Items.AddRange(new String[] { "(none)", "$salt . $pass", "$pass . $salt", "$salt . $pass . $salt" });
             cb_useSalt.SelectedIndex = 0;
-
-
-            //forcer le checksum toupper / tolower selon config
-
         }
 
+        public void fctTest()
+        {
+            Param p = new Param { StringValueToHash = "password" };
+            String str = "";
+
+            str += new HashClass().GetLDAP(p);
+            str += Environment.NewLine;
+
+            str += "{SHA}" + GetBase64(new HashClass().GetSHA1(p));
+            MessageBox.Show(str);
+        }
+
+        public String GetBase64(String str)
+        {
+            Byte[] b = Encoding.UTF8.GetBytes(str);
+            return Convert.ToBase64String(b);
+        }
 
         public void RefreshListboxAlgos()
         {

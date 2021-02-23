@@ -1,39 +1,64 @@
 ﻿EncodageIndex=1
 OutputUppercase=True
-LDAP;description vide;True;False;True;False
-LM;Ancien hash Windows;True;False;True;False
-NTLM;NTLM v1 hash Windows (MD4);True;False;True;False
-Phpass;Hash webapp (PHPBB, wordpress);True;False;True;False
-Scrypt; (cost : 16384, block : 8, keyLength : 64);True;False;True;False
+Adler32;description vide;True;False;True;True
+CRC32_IEEE;description vide;True;False;True;True
+CRC64_ECMA;description vide;True;False;True;True
+Gost;description vide;True;False;True;True
+Grindahl256;description vide;True;False;True;True
+Grindahl512;description vide;True;False;True;True
+HAS160;description vide;True;False;True;True
+Haval_3_128;description vide;True;False;True;True
+Haval_3_160;description vide;True;False;True;True
+Haval_3_192;description vide;True;False;True;True
+Haval_3_224;description vide;True;False;True;True
+Haval_3_256;description vide;True;False;True;True
+Haval_4_128;description vide;True;False;True;True
+Haval_4_160;description vide;True;False;True;True
+Haval_4_192;description vide;True;False;True;True
+Haval_4_224;description vide;True;False;True;True
+Haval_4_256;description vide;True;False;True;True
+Haval_5_128;description vide;True;False;True;True
+Haval_5_160;description vide;True;False;True;True
+Haval_5_192;description vide;True;False;True;True
+Haval_5_224;description vide;True;False;True;True
+Haval_5_256;description vide;True;False;True;True
 Keccak_256;SHA 3 candidate 256 bits;True;False;True;True
 Keccak_512;SHA 3 candidate;True;False;True;True
-SHA3_256;SHA3 finalisé 256 bits;True;True;True;False
-SHA3_512;SHA3 finalisé 512 bits;True;False;True;False
-MySQL4;MySql OLD_PASSWORD();True;False;True;False
-MySQL5;MySql PASSWORD();True;False;True;False
-MD2;Message Digest 2;True;False;True;True
-MD4;Message Digest 4;True;False;True;True
-MD5;Message Digest 5;True;False;True;True
+LDAP;description vide;True;False;True;False
+LM;Ancien hash Windows (obsolète);True;False;True;False
+MD2;Message Digest 2 (obsolète);True;False;True;True
+MD4;Message Digest 4 (obsolète);True;False;True;True
+MD5;Message Digest 5 (obsolète);True;False;True;True
 MD5Unix;Equivalent de la fonction Unix crypt();True;False;True;False
-SHA1;description vide;True;False;True;True
-SHA256;description vide;True;False;True;True
-SHA384;description vide;True;False;True;True
-SHA512;description vide;True;False;True;True
+Murmur2;64 bits;True;False;True;True
+Murmur3;128 bits;True;False;True;True
+MySQL4;MySql OLD_PASSWORD() (obsolète);True;False;True;False
+MySQL5;MySql PASSWORD() Equivaut à SHA1(SHA1($pass));True;False;True;False
+NTLM;NTLM v1 hash Windows (MD4);True;False;True;False
+Panama;description vide;True;False;True;True
+PBKDF2;Password Based Key Derivation Function. Rfc2898 (HMAC SHA1);True;False;True;False
+Phpass;Hash webapp (PHPBB, wordpress);True;False;True;False
+RadioGatun32;description vide;True;False;True;True
+RadioGatun64;description vide;True;False;True;True
+RIPEMD;description vide;True;False;True;True
 RIPEMD128;description vide;True;False;True;True
 RIPEMD160;description vide;True;False;True;True
 RIPEMD256;description vide;True;False;True;True
 RIPEMD320;description vide;True;False;True;True
-PBKDF2;Password Based Key Derivation Function. Spécialement conçu pour les mots de passe;True;False;True;False
-CRC32;description vide;True;False;True;True
-CRC64;description vide;True;False;True;True
-Murmur2;description vide;True;False;True;True
-Murmur3;description vide;True;False;True;True
-Whirlpool;description vide;False;False;True;True
-Haval256;description vide;False;False;True;True
-Tiger2;description vide;False;False;True;True
-Panama;description vide;False;False;True;True
-Gost;description vide;False;False;True;True
-Grindahl512;description vide;False;False;True;True
-HAS160;description vide;False;False;True;True
-RadioGatun64;description vide;False;False;True;True
-Snefru8_256;description vide;False;False;True;True
+Scrypt; params = cost : 16384, block : 8, keyLength : 64;True;False;True;False
+SHA0;Secure Hash Algorithm (obsolète);True;False;True;True
+SHA1;Secure Hash Algorithm 128 bits (en voie d'obsolescence);True;False;True;True
+SHA224;Secure Hash Algorithm 256 bits;True;False;True;True
+SHA256;Secure Hash Algorithm 256 bits;True;False;True;True
+SHA384;Secure Hash Algorithm 384 bits;True;False;True;True
+SHA512;Secure Hash Algorithm 512 bits;True;False;True;True
+SHA3_256;SHA3 finalisé 256 bits;True;True;True;False
+SHA3_512;SHA3 finalisé 512 bits;True;False;True;False
+Snefru_4_128;description vide;True;False;True;True
+Snefru_4_256;description vide;True;False;True;True
+Snefru_8_128;description vide;True;False;True;True
+Snefru_8_256;description vide;True;False;True;True
+Tiger2;description vide;True;False;True;True
+Tiger_3_192;192 bits;True;False;True;True
+Tiger_4_192;192 bits;True;False;True;True
+Whirlpool;512 bits;False;True;True;True

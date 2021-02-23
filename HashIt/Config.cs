@@ -115,7 +115,6 @@ namespace HashIt
         public String Salt { get; set; }
         public Int32 Iterations { get; set; }
         public FileStream Fs { get; set; }
-
     }
 
 
