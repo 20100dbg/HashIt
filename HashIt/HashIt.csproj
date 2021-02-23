@@ -53,15 +53,12 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CryptSharp">
-      <HintPath>.\CryptSharp.dll</HintPath>
+    <Reference Include="Core, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SeriesOne.CORE.1.0.8\lib\netstandard2.0\Core.dll</HintPath>
     </Reference>
     <Reference Include="HashLib, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\HashLib.dll</HintPath>
-    </Reference>
-    <Reference Include="SHA3.Net">
-      <HintPath>.\SHA3.Net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -109,6 +106,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -2,8 +2,8 @@
 using System.Security.Cryptography;
 using System.Text;
 using HashLib;
-using CryptSharp;
-using SHA3.Net;
+using Core.Security.Cryptography;
+
 
 namespace HashIt
 {
@@ -157,12 +157,13 @@ namespace HashIt
             if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateKeccak512().ComputeStream(p.Fs).ToString();
             else return HashFactory.Crypto.SHA3.CreateKeccak512().ComputeString(p.StringValueToHash).ToString();
         }
-
+        /*
         public String GetLDAP(Param p)
         {
             if (p.Fs != null) return "";
             else return Crypter.Ldap.Crypt(p.StringValueToHash);
         }
+        */
 
         public String GetLM(Param p)
         {
@@ -274,23 +275,24 @@ namespace HashIt
             if (p.Fs != null) return "";
             else
             {
-                if (p.Iterations == 1) p.Iterations = 10000;
+                int nbIterations = p.Iterations;
+                if (nbIterations == 1) nbIterations = 10000;
                 Byte[] bsalt = Settings.GetEncoding().GetBytes(p.Salt);
-                if (bsalt.Length < 8) return "";
+                if (bsalt.Length < 8) return "Sel trop court";
 
                 int outputBytes = 32;
-                var pbkdf2 = new Rfc2898DeriveBytes(p.StringValueToHash, bsalt, p.Iterations);
+                var pbkdf2 = new Rfc2898DeriveBytes(p.StringValueToHash, bsalt, nbIterations);
                 Byte[] bytes = pbkdf2.GetBytes(outputBytes);
                 return BitConverter.ToString(bytes);
             }
         }
-
+        /*
         public String GetPhpass(Param p)
         {
             if (p.Fs != null) return "";
             else return Crypter.Phpass.Crypt(p.StringValueToHash);
         }
-
+        */
         public String GetRadioGatun32(Param p)
         {
             if (p.Fs != null) return HashFactory.Crypto.CreateRadioGatun32().ComputeStream(p.Fs).ToString();
@@ -333,6 +335,7 @@ namespace HashIt
             else return HashFactory.Crypto.CreateRIPEMD320().ComputeString(p.StringValueToHash).ToString();
         }
 
+        /*
         public string GetScrypt(Param p)
         {
             if (p.Fs != null) return "";
@@ -351,7 +354,8 @@ namespace HashIt
                 return BitConverter.ToString(r);
             }
         }
-        
+        */
+
         public String GetSHA0(Param p)
         {
             if (p.Fs != null) return HashFactory.Crypto.CreateSHA0().ComputeStream(p.Fs).ToString();
@@ -388,19 +392,51 @@ namespace HashIt
             else return HashFactory.Crypto.CreateSHA512().ComputeString(p.StringValueToHash).ToString();
         }
 
-        public String GetSHA3_256(Param p)
+        public String GetSHA3_Keccak224(Param p)
         {
             byte[] h;
-            if (p.Fs != null) h = Sha3.Sha3256().ComputeHash(p.Fs);
-            else h = Sha3.Sha3256().ComputeHash(Settings.GetEncoding().GetBytes(p.StringValueToHash));
+            if (p.Fs != null) h = SHA3.CreateKeccak224().ComputeHash(p.Fs);
+            else h = SHA3.CreateKeccak224().ComputeHash(Settings.GetEncoding().GetBytes(p.StringValueToHash));
             return BitConverter.ToString(h);
         }
 
-        public String GetSHA3_512(Param p)
+        public String GetSHA3_Keccak256(Param p)
         {
             byte[] h;
-            if (p.Fs != null) h = Sha3.Sha3512().ComputeHash(p.Fs);
-            else h = Sha3.Sha3512().ComputeHash(Settings.GetEncoding().GetBytes(p.StringValueToHash));
+            if (p.Fs != null) h = SHA3.CreateKeccak256().ComputeHash(p.Fs);
+            else h = SHA3.CreateKeccak256().ComputeHash(Settings.GetEncoding().GetBytes(p.StringValueToHash));
+            return BitConverter.ToString(h);
+        }
+
+        public String GetSHA3_Keccak384(Param p)
+        {
+            byte[] h;
+            if (p.Fs != null) h = SHA3.CreateKeccak384().ComputeHash(p.Fs);
+            else h = SHA3.CreateKeccak384().ComputeHash(Settings.GetEncoding().GetBytes(p.StringValueToHash));
+            return BitConverter.ToString(h);
+        }
+
+        public String GetSHA3_Keccak512(Param p)
+        {
+            byte[] h;
+            if (p.Fs != null) h = SHA3.CreateKeccak512().ComputeHash(p.Fs);
+            else h = SHA3.CreateKeccak512().ComputeHash(Settings.GetEncoding().GetBytes(p.StringValueToHash));
+            return BitConverter.ToString(h);
+        }
+
+        public String GetSHA3_Shake128(Param p)
+        {
+            byte[] h;
+            if (p.Fs != null) h = SHA3.CreateShake128(128).ComputeHash(p.Fs);
+            else h = SHA3.CreateShake128(128).ComputeHash(Settings.GetEncoding().GetBytes(p.StringValueToHash));
+            return BitConverter.ToString(h);
+        }
+
+        public String GetSHA3_Shake256(Param p)
+        {
+            byte[] h;
+            if (p.Fs != null) h = SHA3.CreateShake256(256).ComputeHash(p.Fs);
+            else h = SHA3.CreateShake256(256).ComputeHash(Settings.GetEncoding().GetBytes(p.StringValueToHash));
             return BitConverter.ToString(h);
         }
 
@@ -459,6 +495,16 @@ namespace HashIt
         {
             if (p.Fs != null) return HashFactory.Hash32.CreateAP().ComputeStream(p.Fs).ToString();
             else return HashFactory.Hash32.CreateAP().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String tet()
+        {
+            Core.Security.Cryptography.SHA3 s;
+            s = SHA3.CreateKeccak224();
+
+            //Core.Security.Cryptography.SHA3
+            //.CreateKeccak224();
+            return "";
         }
 
     }

@@ -15,17 +15,6 @@ namespace HashIt
         String dateVersion = "22/02/2021";
         int tailleMaxAvertissement = 20;
 
-        /*
-         * 
-        siphash / SIP digest authentication (MD5)
-        WPA ?
-        Kerberos
-        Skype
-        MacOS
-        MSSQL, Postgre, Oracle
-        
-        MS Office, PKZIP, 7zip
-        */
 
         public HashIt()
         {
@@ -43,6 +32,9 @@ namespace HashIt
             
             cb_useSalt.Items.AddRange(new String[] { "(none)", "$salt . $pass", "$pass . $salt", "$salt . $pass . $salt" });
             cb_useSalt.SelectedIndex = 0;
+
+
+            //fctTest();
         }
 
         public void fctTest()
@@ -50,11 +42,6 @@ namespace HashIt
             Param p = new Param { StringValueToHash = "password" };
             String str = "";
 
-            str += new HashClass().GetLDAP(p);
-            str += Environment.NewLine;
-
-            str += "{SHA}" + GetBase64(new HashClass().GetSHA1(p));
-            MessageBox.Show(str);
         }
 
         public String GetBase64(String str)
