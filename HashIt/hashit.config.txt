@@ -30,8 +30,10 @@ MD2;Message Digest 2 (obsolète);True;True;True;True
 MD4;Message Digest 4 (obsolète);True;True;True;True
 MD5;Message Digest 5 (obsolète);True;True;True;True
 MD5Unix;Equivalent de la fonction Unix crypt();True;True;True;False
-Murmur2;64 bits;True;True;True;True
-Murmur3;128 bits;True;True;True;True
+Murmur2_32;32 bits;True;True;True;True
+Murmur2_64;64 bits;True;True;True;True
+Murmur3_32;32 bits;True;True;True;True
+Murmur3_128;128 bits;True;True;True;True
 MySQL4;MySql OLD_PASSWORD() (obsolète);True;True;True;False
 MySQL5;MySql PASSWORD() Equivaut à SHA1(SHA1($pass));True;True;True;False
 NTLM;NTLM v1 hash Windows (MD4);True;True;True;False
@@ -60,3 +62,9 @@ Tiger2;description vide;True;True;True;True
 Tiger_3_192;192 bits;True;True;True;True
 Tiger_4_192;192 bits;True;True;True;True
 Whirlpool;512 bits;True;True;True;True
+AP;description vide;True;True;True;True
+DotNet;description vide;True;True;True;True
+ELF;description vide;True;True;True;True
+Jenkins3;description vide;True;True;True;True
+Sip;description vide;True;True;True;True
+Fnv;description vide;True;True;True;True

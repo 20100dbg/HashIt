@@ -200,13 +200,25 @@ namespace HashIt
             else return Unix_MD5Crypt.MD5Crypt.crypt(p.StringValueToHash, p.Salt);
         }
 
-        public String GetMurmur2(Param p)
+        public String GetMurmur2_32(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateMurmur2().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateMurmur2().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetMurmur2_64(Param p)
         {
             if (p.Fs != null) return HashFactory.Hash64.CreateMurmur2().ComputeStream(p.Fs).ToString();
             else return HashFactory.Hash64.CreateMurmur2().ComputeString(p.StringValueToHash).ToString();
         }
 
-        public String GetMurmur3(Param p)
+        public String GetMurmur3_32(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateMurmur3().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateMurmur3().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetMurmur3_128(Param p)
         {
             if (p.Fs != null) return HashFactory.Hash128.CreateMurmur3_128().ComputeStream(p.Fs).ToString();
             else return HashFactory.Hash128.CreateMurmur3_128().ComputeString(p.StringValueToHash).ToString();
@@ -497,14 +509,34 @@ namespace HashIt
             else return HashFactory.Hash32.CreateAP().ComputeString(p.StringValueToHash).ToString();
         }
 
-        public String tet()
+        public String GetDotNet(Param p)
         {
-            Core.Security.Cryptography.SHA3 s;
-            s = SHA3.CreateKeccak224();
+            if (p.Fs != null) return HashFactory.Hash32.CreateDotNet().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateDotNet().ComputeString(p.StringValueToHash).ToString();
+        }
 
-            //Core.Security.Cryptography.SHA3
-            //.CreateKeccak224();
-            return "";
+        public String GetELF(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateELF().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateELF().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetJenkins3(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateJenkins3().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateJenkins3().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetSip(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash64.CreateSipHash().ComputeStream(p.Fs).ToString();
+            return HashFactory.Hash64.CreateSipHash().ComputeString(p.StringValueToHash).ToString();
+        }
+
+        public String GetFnv(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash64.CreateFNV().ComputeStream(p.Fs).ToString();
+            return HashFactory.Hash64.CreateFNV().ComputeString(p.StringValueToHash).ToString();
         }
 
     }

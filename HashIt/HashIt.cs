@@ -4,11 +4,16 @@ using System.IO;
 using System.Drawing;
 using System.Reflection;
 using System.Text;
+using HashLib;
 
 namespace HashIt
 {
     public partial class HashIt : Form
     {
+        //https://www.mkpasswd.net/
+        //https://www.browserling.com/tools/mysql-password
+
+
         public Boolean configShown = false;
         public String DraggedFile = "";
         String version = "1.0.1";
@@ -42,11 +47,42 @@ namespace HashIt
             Param p = new Param { StringValueToHash = "password" };
             String str = "";
 
+            /*
+            HashResult hr = HashFactory.Crypto.CreateMD5().ComputeString(p.StringValueToHash);
+
+            String hrToString = hr.ToString();
+            String fromBitconv = BitConverter.ToString(hr.GetBytes());
+
+            str += "{MD5}" + GetBase64(hr.GetBytes());
+            str += Environment.NewLine;
+            str += "{MD5}" + GetBase64(hr.ToString());
+            str += Environment.NewLine;
+            str += "{MD5}" + GetBase64(hr.ToString().Replace("-",""));
+            str += Environment.NewLine;
+            str += "{MD5}" + GetBase64(fromBitconv);
+            str += Environment.NewLine;
+            str += "{MD5}" + GetBase64(fromBitconv.Replace("-", ""));
+            
+
+            str += HashFactory.Hash128.CreateMurmur3_128().ComputeString(p.StringValueToHash).ToString();
+            str += Environment.NewLine;
+            str += HashFactory.Hash32.CreateMurmur3().ComputeString(p.StringValueToHash).ToString();
+            str += Environment.NewLine;
+            str += HashFactory.Hash32.CreateMurmur2().ComputeString(p.StringValueToHash).ToString();
+            str += Environment.NewLine;
+            str += HashFactory.Hash64.CreateMurmur2().ComputeString(p.StringValueToHash).ToString();
+
+            MessageBox.Show(str);
+            */
         }
 
         public String GetBase64(String str)
         {
-            Byte[] b = Encoding.UTF8.GetBytes(str);
+            return GetBase64(Encoding.UTF8.GetBytes(str));
+        }
+
+        public String GetBase64(Byte[] b)
+        {
             return Convert.ToBase64String(b);
         }
 
