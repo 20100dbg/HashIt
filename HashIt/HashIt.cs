@@ -47,33 +47,26 @@ namespace HashIt
             Param p = new Param { StringValueToHash = "password" };
             String str = "";
 
-            /*
-            HashResult hr = HashFactory.Crypto.CreateMD5().ComputeString(p.StringValueToHash);
+            CRC8.ComputeChecksum();
 
-            String hrToString = hr.ToString();
-            String fromBitconv = BitConverter.ToString(hr.GetBytes());
+            string input = "8000";
+            var bytes = HexToBytes(input);
+            string hex = CRC16.ComputeChecksum(bytes).ToString("x2");
+            Console.WriteLine(hex); //c061
 
-            str += "{MD5}" + GetBase64(hr.GetBytes());
-            str += Environment.NewLine;
-            str += "{MD5}" + GetBase64(hr.ToString());
-            str += Environment.NewLine;
-            str += "{MD5}" + GetBase64(hr.ToString().Replace("-",""));
-            str += Environment.NewLine;
-            str += "{MD5}" + GetBase64(fromBitconv);
-            str += Environment.NewLine;
-            str += "{MD5}" + GetBase64(fromBitconv.Replace("-", ""));
-            
 
-            str += HashFactory.Hash128.CreateMurmur3_128().ComputeString(p.StringValueToHash).ToString();
-            str += Environment.NewLine;
-            str += HashFactory.Hash32.CreateMurmur3().ComputeString(p.StringValueToHash).ToString();
-            str += Environment.NewLine;
-            str += HashFactory.Hash32.CreateMurmur2().ComputeString(p.StringValueToHash).ToString();
-            str += Environment.NewLine;
-            str += HashFactory.Hash64.CreateMurmur2().ComputeString(p.StringValueToHash).ToString();
+            CRC16_2 c = new CRC16_2(Crc16Mode.Standard);
 
-            MessageBox.Show(str);
-            */
+        }
+
+        static byte[] HexToBytes(string input)
+        {
+            byte[] result = new byte[input.Length / 2];
+            for (int i = 0; i < result.Length; i++)
+            {
+                result[i] = Convert.ToByte(input.Substring(2 * i, 2), 16);
+            }
+            return result;
         }
 
         public String GetBase64(String str)
