@@ -138,6 +138,13 @@ namespace HashIt
 
         public static Boolean ReadConfigFile()
         {
+            Config.listEncodages.Add(new Encodage { Name = "Defaut", Enc = Encoding.Default });
+            Config.listEncodages.Add(new Encodage { Name = "UTF8", Enc = Encoding.UTF8 });
+            Config.listEncodages.Add(new Encodage { Name = "UTF16", Enc = Encoding.Unicode });
+            Config.listEncodages.Add(new Encodage { Name = "Win Europe Ouest", Enc = Encoding.GetEncoding(1252) });
+            Config.listEncodages.Add(new Encodage { Name = "ASCII", Enc = Encoding.ASCII });
+
+
             if (!File.Exists(ConFile)) return false;
             String conStr = File.ReadAllText(ConFile);
 

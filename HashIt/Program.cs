@@ -4,14 +4,23 @@ using System.CommandLine;
 using System.IO;
 using System.CommandLine.Invocation;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace HashIt
 {
     static class Program
     {
+        // defines for commandline output
+        [DllImport("kernel32.dll")]
+        static extern bool AttachConsole(int dwProcessId);
+        private const int ATTACH_PARENT_PROCESS = -1;
+
         [STAThread]
         static int Main(string[] args)
         {
+            // redirect console output to parent process;
+            // must be before any calls to Console.WriteLine()
+            AttachConsole(ATTACH_PARENT_PROCESS);
 
             if (args.Length == 0)
             {
@@ -41,6 +50,7 @@ namespace HashIt
 
                 return cmd.Invoke(args);
             }
+
         }
 
         static void HandleCLI(string file, string text, string salt, int salt_method, int iterations, string algo, bool output_lowercase, IConsole console)
