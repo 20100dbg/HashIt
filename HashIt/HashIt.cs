@@ -2,9 +2,8 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
-using System.Reflection;
 using System.Text;
-using HashLib;
+using System.Collections.Generic;
 
 namespace HashIt
 {
@@ -16,8 +15,8 @@ namespace HashIt
 
         public Boolean configShown = false;
         public String DraggedFile = "";
-        String version = "1.0.1";
-        String dateVersion = "22/02/2021";
+        String version = "1.1.0";
+        String dateVersion = "25/02/2021";
         int tailleMaxAvertissement = 20;
 
 
@@ -31,7 +30,6 @@ namespace HashIt
             Config.listEncodages.Add(new Encodage { Name = "Win Europe Ouest", Enc = Encoding.GetEncoding(1252) });
             Config.listEncodages.Add(new Encodage { Name = "ASCII", Enc = Encoding.ASCII });
 
-
             if (Settings.ReadConfigFile()) RefreshListboxAlgos();
             else MessageBox.Show("problème fichier de config");
             
@@ -44,40 +42,18 @@ namespace HashIt
 
         public void fctTest()
         {
-            Param p = new Param { StringValueToHash = "password" };
-            String str = "";
+            Param p = new Param { ValueToHash = "password" };
 
             CRC8.ComputeChecksum();
 
             string input = "8000";
-            var bytes = HexToBytes(input);
+            var bytes = Util.HexToBytes(input);
             string hex = CRC16.ComputeChecksum(bytes).ToString("x2");
             Console.WriteLine(hex); //c061
 
-
             CRC16_2 c = new CRC16_2(Crc16Mode.Standard);
-
         }
-
-        static byte[] HexToBytes(string input)
-        {
-            byte[] result = new byte[input.Length / 2];
-            for (int i = 0; i < result.Length; i++)
-            {
-                result[i] = Convert.ToByte(input.Substring(2 * i, 2), 16);
-            }
-            return result;
-        }
-
-        public String GetBase64(String str)
-        {
-            return GetBase64(Encoding.UTF8.GetBytes(str));
-        }
-
-        public String GetBase64(Byte[] b)
-        {
-            return Convert.ToBase64String(b);
-        }
+        
 
         public void RefreshListboxAlgos()
         {
@@ -97,7 +73,7 @@ namespace HashIt
         private void b_hashFile_Click(object sender, EventArgs e)
         {
             Clear();
-            tb_checksum.Text = (Settings.OutputUppercase) ? tb_checksum.Text.ToUpper() : tb_checksum.Text.ToLower();
+            
             if (!File.Exists(DraggedFile)) return;
 
             if ((tailleMaxAvertissement * 1024 * 1024) <= new FileInfo(DraggedFile).Length)
@@ -107,25 +83,17 @@ namespace HashIt
             }
 
             l_fichier.Text = Path.GetFileName(DraggedFile);
-            HashClass h = new HashClass();
-            Param p = new Param();
 
-            using (FileStream stream = File.OpenRead(DraggedFile))
-            {
-                for (int i = 0; i < cblb_algos.CheckedItems.Count; i++)
-                {
-                    String algo = cblb_algos.CheckedItems[i].ToString();
-                    p.Fs = stream;
 
-                    object ob = h.GetType().InvokeMember("Get" + algo, BindingFlags.Public | BindingFlags.Instance | BindingFlags.InvokeMethod, null, h, new object[] { p });
-                    String hash = ob.ToString();
-                    hash = ((Settings.OutputUppercase) ? hash.ToUpper() : hash.ToLower());
-                    hash = hash.Replace("-", "");
-                    AddRow(algo, hash);
+            List<String> algos = new List<string>();
 
-                    stream.Position = 0;
-                }
-            }
+            for (int i = 0; i < cblb_algos.CheckedItems.Count; i++)
+                algos.Add(cblb_algos.CheckedItems[i].ToString());
+
+            Dictionary<String, String>  dicAlgos = Work.HashFile(DraggedFile, algos);
+
+            foreach (KeyValuePair<String, String> pair in dicAlgos)
+                AddRow(pair.Key, pair.Value);
 
             Checksum();
         }
@@ -134,52 +102,33 @@ namespace HashIt
         private void b_hashText_Click(object sender, EventArgs e)
         {
             Clear();
-            tb_checksum.Text = (Settings.OutputUppercase) ? tb_checksum.Text.ToUpper() : tb_checksum.Text.ToLower();
 
             int saltUse = cb_useSalt.SelectedIndex;
             int nb = (int)nb_iterations.Value;
             String originalPassword = tb_texte.Text;
-            String saltedPassword = tb_texte.Text;
             String sel = tb_sel.Text;
 
-            if (saltUse == 1) saltedPassword = sel + originalPassword;
-            else if (saltUse == 2) saltedPassword = originalPassword + sel;
-            else if (saltUse == 3) saltedPassword = sel + originalPassword + sel;
-
-            HashClass h = new HashClass();
+            
             Param p = new Param
             {
                 Iterations = nb,
                 OriginalPassword = originalPassword,
                 Salt = sel,
-                SaltedPassword = saltedPassword
             };
 
+            p.ApplySaltUse(saltUse);
 
+
+            List<String> algos = new List<string>();
 
             for (int i = 0; i < cblb_algos.CheckedItems.Count; i++)
-            {
-                String algo = cblb_algos.CheckedItems[i].ToString();
-
-                if (saltUse == 0) p.StringValueToHash = p.OriginalPassword;
-                else p.StringValueToHash = p.SaltedPassword;
-                p.ByteValueToHash = Settings.GetEncoding().GetBytes(p.StringValueToHash);
+                algos.Add(cblb_algos.CheckedItems[i].ToString());
 
 
-                for (int j = 0; j < p.Iterations; j++)
-                {
-                    object ob = h.GetType().InvokeMember("Get" + algo, BindingFlags.Public | BindingFlags.Instance | BindingFlags.InvokeMethod, null, h, new object[] { p });
-                    
-                    String hash = ob.ToString();
-                    hash = hash.Replace("-", "");
-                    hash = ((Settings.OutputUppercase) ? hash.ToUpper() : hash.ToLower());
+            Dictionary<String, String>  dicAlgos = Work.HashText(p, algos);
 
-                    p.ResultHash = hash;
-                    p.StringValueToHash = hash;
-                }
-
-                AddRow(algo, p.ResultHash);
-            }
+            foreach (KeyValuePair<String, String> pair in dicAlgos)
+                AddRow(pair.Key, pair.Value);
 
             Checksum();
         }
@@ -202,6 +151,7 @@ namespace HashIt
             tb_checksum.BackColor = Color.White;
             dgv_hashs.Rows.Clear();
             l_fichier.Text = "Déposer un fichier";
+            tb_checksum.Text = (Settings.OutputUppercase) ? tb_checksum.Text.ToUpper() : tb_checksum.Text.ToLower();
         }
 
         public void AddRow(String algo, String hash)

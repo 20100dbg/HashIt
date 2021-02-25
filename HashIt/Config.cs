@@ -108,13 +108,23 @@ namespace HashIt
         public String OriginalPassword { get; set; }
         public String SaltedPassword { get; set; }
 
-        public String StringValueToHash { get; set; }
-        public Byte[] ByteValueToHash { get; set; }
-
+        public String OriginalValueToHash { get; set; }
+        public String ValueToHash { get; set; }
         public String ResultHash { get; set; }
+        
         public String Salt { get; set; }
         public Int32 Iterations { get; set; }
         public FileStream Fs { get; set; }
+
+        public void ApplySaltUse(int saltUse)
+        {
+            if (saltUse == 1) SaltedPassword = Salt + OriginalPassword;
+            else if (saltUse == 2) SaltedPassword = OriginalPassword + Salt;
+            else if (saltUse == 3) SaltedPassword = Salt + OriginalPassword + Salt;
+
+            if (saltUse == 0) OriginalValueToHash = OriginalPassword;
+            else OriginalValueToHash = SaltedPassword;
+        }
     }
 
 
