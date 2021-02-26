@@ -678,14 +678,12 @@ namespace HashIt
             else return "";
         }
 
-
         public String GetFCS16(Param p)
         {
             byte[] result = FCS16.GetFCS16(p.ValueToHash, p.ValueToHash.Length);
             if (p.Fs == null) return BitConverter.ToString(result);
             else return "";
         }
-
 
 
     }
