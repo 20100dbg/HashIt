@@ -20,6 +20,30 @@ namespace HashIt
             else return HashFactory.Checksum.CreateAdler32().ComputeString(p.ValueToHash).ToString();
         }
 
+        public String GetAP(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateAP().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateAP().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetBernstein(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateBernstein().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateBernstein().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetBernstein1(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateBernstein1().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateBernstein1().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetBKDR(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateBKDR().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateBKDR().ComputeString(p.ValueToHash).ToString();
+        }
+
         public String GetCRC32_IEEE(Param p)
         {
             if (p.Fs != null) return HashFactory.Checksum.CreateCRC32_IEEE().ComputeStream(p.Fs).ToString();
@@ -30,6 +54,42 @@ namespace HashIt
         {
             if (p.Fs != null) return HashFactory.Checksum.CreateCRC64_ECMA().ComputeStream(p.Fs).ToString();
             else return HashFactory.Checksum.CreateCRC64_ECMA().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetDEK(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateDEK().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateDEK().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetDJB(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateDJB().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateDJB().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetDotNet(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateDotNet().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateDotNet().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetELF(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateELF().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateELF().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetFnv(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash64.CreateFNV().ComputeStream(p.Fs).ToString();
+            return HashFactory.Hash64.CreateFNV().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetFNV1a(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateFNV1a().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateFNV1a().ComputeString(p.ValueToHash).ToString();
         }
 
         public String GetGost(Param p)
@@ -146,6 +206,18 @@ namespace HashIt
             else return HashFactory.Crypto.CreateHaval_5_256().ComputeString(p.ValueToHash).ToString();
         }
 
+        public String GetJenkins3(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateJenkins3().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateJenkins3().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetJS(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateJS().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateJS().ComputeString(p.ValueToHash).ToString();
+        }
+
         public String GetKeccak_256(Param p)
         {
             if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateKeccak256().ComputeStream(p.Fs).ToString();
@@ -157,6 +229,7 @@ namespace HashIt
             if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateKeccak512().ComputeStream(p.Fs).ToString();
             else return HashFactory.Crypto.SHA3.CreateKeccak512().ComputeString(p.ValueToHash).ToString();
         }
+        
         /*
         public String GetLDAP(Param p)
         {
@@ -276,6 +349,12 @@ namespace HashIt
             else return GetMD4(p);
         }
 
+        public String GetOneAtTime(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateOneAtTime().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateOneAtTime().ComputeString(p.ValueToHash).ToString();
+        }
+
         public String GetPanama(Param p)
         {
             if (p.Fs != null) return HashFactory.Crypto.CreatePanama().ComputeStream(p.Fs).ToString();
@@ -298,6 +377,7 @@ namespace HashIt
                 return BitConverter.ToString(bytes);
             }
         }
+
         /*
         public String GetPhpass(Param p)
         {
@@ -305,6 +385,13 @@ namespace HashIt
             else return Crypter.Phpass.Crypt(p.StringValueToHash);
         }
         */
+
+        public String GetPJW(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreatePJW().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreatePJW().ComputeString(p.ValueToHash).ToString();
+        }
+
         public String GetRadioGatun32(Param p)
         {
             if (p.Fs != null) return HashFactory.Crypto.CreateRadioGatun32().ComputeStream(p.Fs).ToString();
@@ -347,6 +434,18 @@ namespace HashIt
             else return HashFactory.Crypto.CreateRIPEMD320().ComputeString(p.ValueToHash).ToString();
         }
 
+        public String GetRotating(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateRotating().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateRotating().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetRS(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateRS().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateRS().ComputeString(p.ValueToHash).ToString();
+        }
+
         /*
         public string GetScrypt(Param p)
         {
@@ -367,6 +466,12 @@ namespace HashIt
             }
         }
         */
+
+        public String GetSDBM(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateSDBM().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateSDBM().ComputeString(p.ValueToHash).ToString();
+        }
 
         public String GetSHA0(Param p)
         {
@@ -452,6 +557,24 @@ namespace HashIt
             return BitConverter.ToString(h);
         }
 
+        public String GetShiftAndXor(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateShiftAndXor().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateShiftAndXor().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetSip(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash64.CreateSipHash().ComputeStream(p.Fs).ToString();
+            return HashFactory.Hash64.CreateSipHash().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetSuperFast(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Hash32.CreateSuperFast().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Hash32.CreateSuperFast().ComputeString(p.ValueToHash).ToString();
+        }
+
         public String GetSnefru_4_128(Param p)
         {
             if (p.Fs != null) return HashFactory.Crypto.CreateSnefru_4_128().ComputeStream(p.Fs).ToString();
@@ -503,41 +626,67 @@ namespace HashIt
 
         // en test // en test // en test 
 
-        public String GetAP(Param p)
+        public String GetBSDchecksum(Param p)
         {
-            if (p.Fs != null) return HashFactory.Hash32.CreateAP().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Hash32.CreateAP().ComputeString(p.ValueToHash).ToString();
+            if (p.Fs != null) return Checksum.BSDchecksum(p.Fs).ToString();
+            else return "";
         }
 
-        public String GetDotNet(Param p)
+        public String GetCRC8(Param p)
         {
-            if (p.Fs != null) return HashFactory.Hash32.CreateDotNet().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Hash32.CreateDotNet().ComputeString(p.ValueToHash).ToString();
+            byte[] passBytes = Settings.GetEncoding().GetBytes(p.ValueToHash);
+            byte result = CRC8.ComputeChecksum(passBytes);
+            if (p.Fs == null) return result.ToString("X2");
+            else return "";
         }
 
-        public String GetELF(Param p)
+        public String GetCRC16(Param p)
         {
-            if (p.Fs != null) return HashFactory.Hash32.CreateELF().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Hash32.CreateELF().ComputeString(p.ValueToHash).ToString();
+            byte[] passBytes = Settings.GetEncoding().GetBytes(p.ValueToHash);
+            ushort result = CRC16.ComputeChecksum(passBytes);
+            if (p.Fs == null) return result.ToString("X2");
+            else return "";
         }
 
-        public String GetJenkins3(Param p)
+        public String GetCRC16_2_std(Param p)
         {
-            if (p.Fs != null) return HashFactory.Hash32.CreateJenkins3().ComputeStream(p.Fs).ToString();
-            else return HashFactory.Hash32.CreateJenkins3().ComputeString(p.ValueToHash).ToString();
+            CRC16_2 c = new CRC16_2(Crc16Mode.Standard);
+            
+            byte[] passBytes = Settings.GetEncoding().GetBytes(p.ValueToHash);
+            byte[]result = c.ComputeChecksumBytes(passBytes);
+
+            if (p.Fs == null) return BitConverter.ToString(result);
+            else return "";
         }
 
-        public String GetSip(Param p)
+        public String GetCRC16_2_kermit(Param p)
         {
-            if (p.Fs != null) return HashFactory.Hash64.CreateSipHash().ComputeStream(p.Fs).ToString();
-            return HashFactory.Hash64.CreateSipHash().ComputeString(p.ValueToHash).ToString();
+            CRC16_2 c = new CRC16_2(Crc16Mode.CcittKermit);
+
+            byte[] passBytes = Settings.GetEncoding().GetBytes(p.ValueToHash);
+            byte[] result = c.ComputeChecksumBytes(passBytes);
+
+            if (p.Fs == null) return BitConverter.ToString(result);
+            else return "";
         }
 
-        public String GetFnv(Param p)
+        public String GetCRC24(Param p)
         {
-            if (p.Fs != null) return HashFactory.Hash64.CreateFNV().ComputeStream(p.Fs).ToString();
-            return HashFactory.Hash64.CreateFNV().ComputeString(p.ValueToHash).ToString();
+            int result = CRC24.hash(p.ValueToHash);
+
+            if (p.Fs == null) return result.ToString();
+            else return "";
         }
+
+
+        public String GetFCS16(Param p)
+        {
+            byte[] result = FCS16.GetFCS16(p.ValueToHash, p.ValueToHash.Length);
+            if (p.Fs == null) return BitConverter.ToString(result);
+            else return "";
+        }
+
+
 
     }
 }

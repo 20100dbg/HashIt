@@ -2,8 +2,18 @@
 OutputUppercase=True
 UseBytesInsteadString=False
 Adler32;description vide;True;True;True;True
+AP;description vide;True;True;True;True
+Bernstein;description vide;True;True;True;True
+Bernstein1;description vide;True;True;True;True
+BKDR;description vide;True;True;True;True
 CRC32_IEEE;description vide;True;True;True;True
 CRC64_ECMA;description vide;True;True;True;True
+DEK;description vide;True;True;True;True
+DJB;description vide;True;True;True;True
+DotNet;description vide;True;True;True;True
+ELF;description vide;True;True;True;True
+Fnv;description vide;True;True;True;True
+Fnv1a;description vide;True;True;True;True
 Gost;description vide;True;True;True;True
 Grindahl256;description vide;True;True;True;True
 Grindahl512;description vide;True;True;True;True
@@ -23,6 +33,8 @@ Haval_5_160;description vide;True;True;True;True
 Haval_5_192;description vide;True;True;True;True
 Haval_5_224;description vide;True;True;True;True
 Haval_5_256;description vide;True;True;True;True
+Jenkins3;description vide;True;True;True;True
+JS;description vide;True;True;True;True
 Keccak_256;SHA 3 candidate 256 bits;True;True;True;True
 Keccak_512;SHA 3 candidate;True;True;True;True
 LM;Ancien hash Windows (obsolète);True;True;True;False
@@ -37,8 +49,10 @@ Murmur3_128;128 bits;True;True;True;True
 MySQL4;MySql OLD_PASSWORD() (obsolète);True;True;True;False
 MySQL5;MySql PASSWORD() Equivaut à SHA1(SHA1($pass));True;True;True;False
 NTLM;NTLM v1 hash Windows (MD4);True;True;True;False
+OneAtTime;description vide;True;True;True;True
 Panama;description vide;True;True;True;True
 PBKDF2;Password Based Key Derivation Function. Rfc2898 (HMAC SHA1);True;True;True;False
+PJW;description vide;True;True;True;True
 RadioGatun32;description vide;True;True;True;True
 RadioGatun64;description vide;True;True;True;True
 RIPEMD;description vide;True;True;True;True
@@ -46,6 +60,9 @@ RIPEMD128;description vide;True;True;True;True
 RIPEMD160;description vide;True;True;True;True
 RIPEMD256;description vide;True;True;True;True
 RIPEMD320;description vide;True;True;True;True
+Rotating;description vide;True;True;True;True
+RS;description vide;True;True;True;True
+SBDM;description vide;True;True;True;True
 SHA0;Secure Hash Algorithm (obsolète);True;True;True;True
 SHA1;Secure Hash Algorithm 128 bits (en voie d'obsolescence);True;True;True;True
 SHA224;Secure Hash Algorithm 256 bits;True;True;True;True
@@ -54,6 +71,9 @@ SHA384;Secure Hash Algorithm 384 bits;True;True;True;True
 SHA512;Secure Hash Algorithm 512 bits;True;True;True;True
 SHA3_Keccak256;SHA3 finalisé 256 bits;True;True;True;False
 SHA3_Keccak512;SHA3 finalisé 512 bits;True;True;True;False
+ShiftAndXor;description vide;True;True;True;True
+Sip;description vide;True;True;True;True
+SuperFast;description vide;True;True;True;True
 Snefru_4_128;description vide;True;True;True;True
 Snefru_4_256;description vide;True;True;True;True
 Snefru_8_128;description vide;True;True;True;True
@@ -62,9 +82,11 @@ Tiger2;description vide;True;True;True;True
 Tiger_3_192;192 bits;True;True;True;True
 Tiger_4_192;192 bits;True;True;True;True
 Whirlpool;512 bits;True;True;True;True
-AP;description vide;True;True;True;True
-DotNet;description vide;True;True;True;True
-ELF;description vide;True;True;True;True
-Jenkins3;description vide;True;True;True;True
-Sip;description vide;True;True;True;True
-Fnv;description vide;True;True;True;True
+
+BSDchecksum;En test;True;True;False;True
+CRC8;En test;True;True;True;False
+CRC16;En test;True;True;True;False
+CRC16_2_std;En test;True;True;True;False
+CRC16_2_kermit;En test;True;True;True;False
+CRC24;En test;True;True;True;False
+FCS16;En test;True;True;True;False

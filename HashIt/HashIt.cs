@@ -130,12 +130,15 @@ namespace HashIt
 
         private void Checksum()
         {
-            for (int i = 0; i < dgv_hashs.Rows.Count; i++)
+            if (tb_checksum.Text != "")
             {
-                if (dgv_hashs.Rows[i].Cells[1].Value.ToString() == tb_checksum.Text)
+                for (int i = 0; i < dgv_hashs.Rows.Count; i++)
                 {
-                    tb_checksum.BackColor = Color.LightGreen;
-                    dgv_hashs.Rows[i].Cells[1].Style.BackColor = Color.LightGreen;
+                    if (dgv_hashs.Rows[i].Cells[1].Value.ToString() == tb_checksum.Text)
+                    {
+                        tb_checksum.BackColor = Color.LightGreen;
+                        dgv_hashs.Rows[i].Cells[1].Style.BackColor = Color.LightGreen;
+                    }
                 }
             }
         }
