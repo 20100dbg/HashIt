@@ -16,7 +16,7 @@ namespace HashIt
         private const int ATTACH_PARENT_PROCESS = -1;
 
         [STAThread]
-        static int Main(string[] args)
+        static void Main(string[] args)
         {
             // redirect console output to parent process;
             // must be before any calls to Console.WriteLine()
@@ -27,72 +27,74 @@ namespace HashIt
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new HashIt());
-                return 0;
             }
             else
             {
-                RootCommand cmd = new RootCommand
-                {
-                    //new Argument<string>("file", "file to hash"),
-
-                    new Argument<string>("text", "Text to hash"),
-                    new Argument<string>("salt", "Salt to use"),
-                    new Argument<int>("salt-method", "Salt method to use"),
-                    new Argument<int>("iterations", "Number of iterations"),
-
-                    new Argument<string>("algo", "algo to use"),
-                    new Option<bool>("output-lowercase", "Output hashes in lowercase"),
-
-                };
-
-
-                cmd.Handler = CommandHandler.Create<string, string, string, int, int, string, bool, IConsole>(HandleCLI);
-
-                return cmd.Invoke(args);
+                HandleCLI(args);
             }
-
         }
 
-        static void HandleCLI(string file, string text, string salt, int salt_method, int iterations, string algo, bool output_lowercase, IConsole console)
+        static async void HandleCLI(string[] args)
+        {
+            /*
+            Command cFile = new Command("file", "file mode");
+            cFile.AddArgument(new Argument<FileInfo>("filepath", "Specify file to hash"));
+            
+            Command cText = new Command("text", "text mode");
+            cText.AddArgument(new Argument<String>("text", "Specify text to hash"));
+            cText.AddOption(new Option<string>("--test","option text"));
+            */
+            RootCommand cmd = new RootCommand
+            {
+                
+                //cText,
+                //cFile,
+                new Option<FileInfo>(new string[] { "--file", "-f" }, getDefaultValue: () => null, "File to hash"),
+                new Option<string>(new string[] { "--text", "-t" }, getDefaultValue: () => "", "Text to hash"),
+
+                new Option<string>(new string[] { "--salt", "-s" }, getDefaultValue: () => "", "Salt to use"),
+                new Option<int>(new string[] { "--salt-method", "-m" }, getDefaultValue: () => 0, "Salt method to use"),
+                new Option<int>(new string[] { "--iterations", "-i" }, getDefaultValue: () => 1, "Number of iterations"),
+
+                new Option<string>(new string[] { "--algo", "-a" },  getDefaultValue: () => "all", "algo to use"),
+                //new Option<int>(new string[] {"--lower", "-l" },  getDefaultValue: () => 0, "lowercase") //weird hack
+
+            };
+
+            cmd.Description = "HashIt - an handy hash software";
+            cmd.Handler = CommandHandler.Create<FileInfo, string, string, int, int, string, int, IConsole>(HandleArgs);
+
+            //Action handler = () => { };
+            //cmd.Handler = CommandHandler.Create(handler);
+            await cmd.InvokeAsync(args);
+
+            System.Windows.Forms.SendKeys.SendWait("{ENTER}"); //hack to pass hand back to console
+        }
+
+
+        static void HandleArgs(FileInfo file, string text, string salt, int salt_method, int iterations, string algo, int output_lowercase, IConsole console)
         {
             if (!Settings.ReadConfigFile())
             {
                 Console.WriteLine("failed to read config file");
             }
 
-            String[] tabAlgos = algo.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            Dictionary<String, String> dicAlgos;
-            List<String> algos = new List<String>();
+            Settings.OutputUppercase = true;
 
+            Dictionary<String, String> dicResultHashes;
+            List<Algo> listAlgos = Work.GetListAlgoToWork(algo);
 
-            for (int i = 0, n = Config.listAlgos.Count; i < n; i++)
-            {
-                for (int j = 0, m = tabAlgos.Length; j < m; j++)
-                {
-                    if (tabAlgos[j] == "all") algos.Add(Config.listAlgos[i].Name);
-                    else if (tabAlgos[j].EndsWith("*") && Config.listAlgos[i].Name.StartsWith(algos[j].Substring(0, tabAlgos[j].Length - 2))) algos.Add(Config.listAlgos[i].Name);
-                    else if (tabAlgos[j] == Config.listAlgos[i].Name) algos.Add(Config.listAlgos[i].Name);
-                }
-            }
-
-            if (File.Exists(file))
-                dicAlgos = Work.HashFile(file, algos);
+            if (file != null && File.Exists(file.FullName))
+                dicResultHashes = Work.HashFile(file.FullName, listAlgos);
             else
             {
-                Param p = new Param
-                {
-                    Iterations = iterations,
-                    OriginalPassword = text,
-                    Salt = salt,
-                };
-
+                Param p = new Param { Iterations = iterations, OriginalPassword = text, Salt = salt, };
                 p.ApplySaltUse(salt_method);
-
-                dicAlgos = Work.HashText(p, algos);
+                dicResultHashes = Work.HashText(p, listAlgos);
             }
 
             Console.WriteLine("Result : ");
-            foreach (KeyValuePair<String, String> pair in dicAlgos)
+            foreach (KeyValuePair<String, String> pair in dicResultHashes)
             {
                 Console.WriteLine(pair.Key + " : " + pair.Value);
             }

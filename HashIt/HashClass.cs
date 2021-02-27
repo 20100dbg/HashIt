@@ -80,7 +80,7 @@ namespace HashIt
             else return HashFactory.Hash32.CreateELF().ComputeString(p.ValueToHash).ToString();
         }
 
-        public String GetFnv(Param p)
+        public String GetFNV(Param p)
         {
             if (p.Fs != null) return HashFactory.Hash64.CreateFNV().ComputeStream(p.Fs).ToString();
             return HashFactory.Hash64.CreateFNV().ComputeString(p.ValueToHash).ToString();
@@ -245,7 +245,7 @@ namespace HashIt
             {
                 String s = p.ValueToHash;
                 if (s.Length > 14) s = s.Substring(0, 14);
-                return BitConverter.ToString(WinHash.LMHash.Compute(s));
+                return BitConverter.ToString(LMHash.Compute(s));
             }
         }
 
@@ -270,7 +270,7 @@ namespace HashIt
         public String GetMD5Unix(Param p)
         {
             if (p.Fs != null) return "";
-            else return Unix_MD5Crypt.MD5Crypt.crypt(p.ValueToHash, p.Salt);
+            else return MD5Crypt.crypt(p.ValueToHash, p.Salt);
         }
 
         public String GetMurmur2_32(Param p)

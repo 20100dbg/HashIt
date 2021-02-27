@@ -11,6 +11,8 @@ namespace HashIt
     {
         //https://www.mkpasswd.net/
         //https://www.browserling.com/tools/mysql-password
+        //https://fr.wikipedia.org/wiki/Liste_de_fonctions_de_hachage
+        //https://github.com/ron4fun/SharpHash
 
 
         public Boolean configShown = false;
@@ -37,6 +39,8 @@ namespace HashIt
         public void fctTest()
         {
             Param p = new Param { ValueToHash = "password" };
+
+
 
             CRC8.ComputeChecksum();
 
@@ -79,12 +83,12 @@ namespace HashIt
             l_fichier.Text = Path.GetFileName(DraggedFile);
 
 
-            List<String> algos = new List<string>();
+            List<Algo> listAlgos = new List<Algo>();
 
             for (int i = 0; i < cblb_algos.CheckedItems.Count; i++)
-                algos.Add(cblb_algos.CheckedItems[i].ToString());
+                listAlgos.Add((Algo)cblb_algos.CheckedItems[i]);
 
-            Dictionary<String, String>  dicAlgos = Work.HashFile(DraggedFile, algos);
+            Dictionary<String, String>  dicAlgos = Work.HashFile(DraggedFile, listAlgos);
 
             foreach (KeyValuePair<String, String> pair in dicAlgos)
                 AddRow(pair.Key, pair.Value);
@@ -113,13 +117,13 @@ namespace HashIt
             p.ApplySaltUse(saltUse);
 
 
-            List<String> algos = new List<string>();
+            List<Algo> listAlgos = new List<Algo>();
 
             for (int i = 0; i < cblb_algos.CheckedItems.Count; i++)
-                algos.Add(cblb_algos.CheckedItems[i].ToString());
+                listAlgos.Add((Algo)cblb_algos.CheckedItems[i]);
 
 
-            Dictionary<String, String>  dicAlgos = Work.HashText(p, algos);
+            Dictionary<String, String>  dicAlgos = Work.HashText(p, listAlgos);
 
             foreach (KeyValuePair<String, String> pair in dicAlgos)
                 AddRow(pair.Key, pair.Value);

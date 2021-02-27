@@ -12,8 +12,8 @@ DEK;description vide;True;True;True;True
 DJB;description vide;True;True;True;True
 DotNet;description vide;True;True;True;True
 ELF;description vide;True;True;True;True
-Fnv;description vide;True;True;True;True
-Fnv1a;description vide;True;True;True;True
+FNV;description vide;True;True;True;True
+FNV1a;description vide;True;True;True;True
 Gost;description vide;True;True;True;True
 Grindahl256;description vide;True;True;True;True
 Grindahl512;description vide;True;True;True;True
