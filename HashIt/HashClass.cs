@@ -686,5 +686,177 @@ namespace HashIt
         }
 
 
+
+        public String GetBlake_224(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateBlake224().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateBlake224().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetBlake_256(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateBlake256().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateBlake256().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetBlake_384(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateBlake384().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateBlake384().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetBlake_512(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateBlake512().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateBlake512().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetBlueMidnightWish_224(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateBlueMidnightWish224().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateBlueMidnightWish224().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetBlueMidnightWish_256(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateBlueMidnightWish256().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateBlueMidnightWish256().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetBlueMidnightWish_384(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateBlueMidnightWish384().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateBlueMidnightWish384().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetBlueMidnightWish_512(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateBlueMidnightWish512().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateBlueMidnightWish512().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetCubeHash_224(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateCubeHash224().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateCubeHash224().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetCubeHash_256(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateCubeHash256().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateCubeHash256().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetCubeHash_384(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateCubeHash384().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateCubeHash384().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetCubeHash_512(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateCubeHash512().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateCubeHash512().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetEcho_224(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateEcho224().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateEcho224().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetEcho_256(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateEcho256().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateEcho256().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetEcho_384(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateEcho384().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateEcho384().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetEcho_512(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateEcho512().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateEcho512().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetFugue_224(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateFugue224().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateFugue224().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetFugue_256(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateFugue256().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateFugue256().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetFugue_384(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateFugue384().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateFugue384().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetFugue_512(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateFugue512().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateFugue512().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetGroestl_224(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateGroestl224().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateGroestl224().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetGroestl_256(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateGroestl256().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateGroestl256().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetGroestl_384(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateGroestl384().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateGroestl384().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetGroestl_512(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateGroestl512().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateGroestl512().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetHamsi_224(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateHamsi224().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateHamsi224().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetHamsi_256(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateHamsi256().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateHamsi256().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetHamsi_384(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateHamsi384().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateHamsi384().ComputeString(p.ValueToHash).ToString();
+        }
+
+        public String GetHamsi_512(Param p)
+        {
+            if (p.Fs != null) return HashFactory.Crypto.SHA3.CreateHamsi512().ComputeStream(p.Fs).ToString();
+            else return HashFactory.Crypto.SHA3.CreateHamsi512().ComputeString(p.ValueToHash).ToString();
+        }
+
+
+
+
     }
 }

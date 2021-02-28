@@ -90,3 +90,33 @@ CRC16_2_std;En test;True;True;True;False
 CRC16_2_kermit;En test;True;True;True;False
 CRC24;En test;True;True;True;False
 FCS16;En test;True;True;True;False
+
+Blake_224;description vide;True;True;True;True
+Blake_256;description vide;True;True;True;True
+Blake_384;description vide;True;True;True;True
+Blake_512;description vide;True;True;True;True
+BlueMidnightWish_224;description vide;True;True;True;True
+BlueMidnightWish_256;description vide;True;True;True;True
+BlueMidnightWish_384;description vide;True;True;True;True
+BlueMidnightWish_512;description vide;True;True;True;True
+CubeHash_224;description vide;True;True;True;True
+CubeHash_256;description vide;True;True;True;True
+CubeHash_384;description vide;True;True;True;True
+CubeHash_512;description vide;True;True;True;True
+Echo_224;description vide;True;True;True;True
+Echo_256;description vide;True;True;True;True
+Echo_384;description vide;True;True;True;True
+Echo_512;description vide;True;True;True;True
+
+Fugue_224;description vide;True;True;True;True
+Fugue_256;description vide;True;True;True;True
+Fugue_384;description vide;True;True;True;True
+Fugue_512;description vide;True;True;True;True
+Groestl_224;description vide;True;True;True;True
+Groestl_256;description vide;True;True;True;True
+Groestl_384;description vide;True;True;True;True
+Groestl_512;description vide;True;True;True;True
+Hamsi_224;description vide;True;True;True;True
+Hamsi_256;description vide;True;True;True;True
+Hamsi_384;description vide;True;True;True;True
+Hamsi_512;description vide;True;True;True;True
